@@ -1,0 +1,70 @@
+<div class="bg">
+  <div  *ngIf="!validity">
+    <div  class="container">
+      <div class="card">
+        <div class="card-body">
+            <form>
+               <div class="form-group">
+                <input type="text" class="form-control" name="userid" placeholder="Username" [(ngModel)]="creds.userid" required/>
+                </div>
+                <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="creds.password" required/>
+                </div>
+                <button class="btn btn-dark" (click)="loginCheck()" [disabled]="!creds.userid||!creds.password"> Log In</button>
+            </form>
+        </div>
+      </div> <br/>
+      <div *ngIf="errormessage && timelimit" > 
+        <app-pop-up [message]="errormessage" [type]="'error'" ></app-pop-up>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="validity">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Ekart</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item ">
+            <a class="nav-link"  [routerLink] = '["/home"]'>Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink] = '["/billing"]'>Billing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink] = '["/details"]'>Details</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" [routerLink] = '["/addproducts"]'>Add Products</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" [routerLink] = '["/excelgenerate"]'>Excel Download</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" [routerLink] = '["/practice2"]'>Practice 2</a>
+          </li>
+        </ul>
+        </div>
+        <div class="ml-auto">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" (click)="logOut()" title="Logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+    </nav><br/>
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">Ekart</a>
+          <a class="navbar-brand" [routerLink] = '["/home"]'>Home</a>
+          <a class="navbar-brand" [routerLink] = '["/billing"]'>Billing</a>
+          <a class="navbar-brand" [routerLink] = '["/details"]'>Details</a>
+          <a class="navbar-brand" [routerLink] = '["/addproducts"]'>Add Products</a>
+          <a class="navbar-brand" [routerLink] = '["/updatepage"]'>Update Page</a>
+          <a class="navbar-brand" [routerLink] = '["/popup"]'>PopUp</a>
+          <a class="navbar-brand"  (click)="logOut()"><button style="background-color: transparent;color: white;">LogOut</button></a>  
+      </nav> -->
+      <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+

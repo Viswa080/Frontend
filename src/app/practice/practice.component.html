@@ -1,0 +1,136 @@
+<div *ngIf="originalData">
+  <div style="display: flex; justify-content: space-between;">
+    <button class="btn btn-dark" mat-button (click)="drawer.toggle()" style="margin-left: auto;">
+     Filters
+    </button>
+</div>
+<mat-drawer-container class="example-container" autosize >
+    <mat-drawer #drawer class="example-sidenav" mode="over" position="end" style="display: flex;">
+        <div class="centralize">
+            
+            <label> Product ID</label>
+            <select class="form-select" [(ngModel)]="filteringData.productid" placeholder="Select a value">
+                <option selected value="">Please select</option>
+                <option  *ngFor="let item of originalData | unique :'productid'" [ngValue]="item">
+                    {{item}}</option>
+            </select>
+
+            <label> Name</label>
+            <select class="form-select" [(ngModel)]="filteringData.productname" placeholder="Select a value">
+                <option selected value="">Please select</option>
+                <option  *ngFor="let item of originalData | unique :'productname'" [ngValue]="item">
+                    {{item}}</option>
+            </select>
+
+            <label> Category</label>
+            <select class="form-select" [(ngModel)]="filteringData.productcategory" placeholder="Select a value">
+                <option selected value="">Please select</option>
+                <option  *ngFor="let item of originalData | unique :'productcategory'" [ngValue]="item">
+                    {{item}}</option>
+            </select>
+
+            <label> Color</label>
+            <select class="form-select" [(ngModel)]="filteringData.color" placeholder="Select a value">
+                <option selected value="">Please select</option>
+                <option  *ngFor="let item of originalData | unique :'color'" [ngValue]="item">
+                    {{item}}</option>
+            </select>
+
+            <label> MRP</label>
+            <select class="form-select" [(ngModel)]="filteringData.productsoldcost" placeholder="Select a value">
+                <option selected value="">Please select</option>
+                <option  *ngFor="let item of originalData | unique :'productsoldcost'" [ngValue]="item">
+                    {{item}}</option>
+            </select>
+
+            <label> In Date</label>
+            <select class="form-select" [(ngModel)]="filteringData.productcomedate" placeholder="Select a value">
+                <option selected value="">Please select</option>
+                <option  *ngFor="let item of originalData | unique :'productcomedate'" [ngValue]="item">
+                    {{item}}</option>
+            </select>
+            <br/>
+              <button mat-raised-button class="btn btn-dark" style="margin-bottom: auto;" (click)=" applyFilters(filteringData)"> 
+              Apply
+               </button>
+               <button mat-raised-button class="btn btn-dark" style="margin-bottom: auto;" (click)=" removeFilters()"> 
+                Remove Filters
+               </button> 
+        </div>
+    </mat-drawer> 
+      <table mat-table  [dataSource]="dataSourceView" matSort class="mat-elevation-z8">
+
+        <ng-container matColumnDef="index">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Product ID</th>
+          <td mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="productid">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Product ID</th>
+          <td mat-cell *matCellDef="let element"> {{element.productid}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="productname">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef> Product Name </th>
+          <td mat-cell *matCellDef="let element; let i=index;" (dblclick)="editField('productName',i)"> 
+            <ng-container *ngIf="editing.row!==i||editing.field!=='productName'">
+              {{element.productname}}
+            </ng-container>
+            <input *ngIf="editing.row===i && editing.field==='productName'" type="text" [(ngModel)]="element.productname" (blur)="stopEdit(element)"></td>
+        </ng-container>
+
+        <ng-container matColumnDef="productcategory">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Category</th>
+          <td mat-cell *matCellDef="let element; let i=index;" (dblclick)="editField('productCat',i)"> 
+            <ng-container *ngIf="editing.row!==i||editing.field!=='productCat'">
+              {{element.productcategory}}
+            </ng-container>
+            <input *ngIf="editing.row===i && editing.field==='productCat'" type="text" [(ngModel)]="element.productcategory" (blur)="stopEdit(element)"></td>
+        </ng-container>
+
+        <ng-container matColumnDef="color">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Color</th>
+          <td mat-cell *matCellDef="let element; let i=index;" (dblclick)="editField('productColor',i)"> 
+            <ng-container *ngIf="editing.row!==i||editing.field!=='productColor'">
+              {{element.color}}
+            </ng-container>
+            <input *ngIf="editing.row===i && editing.field==='productColor'" type="text" [(ngModel)]="element.color" (blur)="stopEdit(element)"></td>
+        </ng-container>
+
+        <ng-container matColumnDef="productsoldcost">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Sold Cost</th>
+          <td mat-cell *matCellDef="let element; let i=index;" (dblclick)="editField('productMRP',i)"> 
+            <ng-container *ngIf="editing.row!==i||editing.field!=='productMRP'">
+              {{element.productsoldcost}}
+            </ng-container>
+            <input *ngIf="editing.row===i && editing.field==='productMRP'" type="text" [(ngModel)]="element.productsoldcost" (blur)="stopEdit(element)"></td>
+        </ng-container>
+        
+        <ng-container matColumnDef="productcomedate">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>In Date</th>
+          <td mat-cell *matCellDef="let element; let i=index;" (dblclick)="editField('productcomedate',i)"> 
+            <ng-container *ngIf="editing.row!==i||editing.field!=='productcomedate'">
+              {{element.productcomedate}}
+            </ng-container>
+            <input *ngIf="editing.row===i && editing.field==='productcomedate'" type="text" [(ngModel)]="element.productcomedate" (blur)="stopEdit(element)"></td>
+        </ng-container>
+    
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div id="pagenation">
+        <mat-paginator [pageSizeOptions]="[5, 8, 10]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+      </mat-paginator>
+      </div>
+      <!-- <app-pagenation [totalItems]="dataSource.length" [itemsPerPage]="rowsPerPage" [currentPage]="pageNo"  (OnPageClick)="changePage($event)"></app-pagenation> -->
+  </mat-drawer-container>
+</div>
+  <div *ngIf="errormessage && timelimit" > 
+    <app-pop-up [message]="errormessage" [type]="'error'" ></app-pop-up>
+  </div>
+  <div *ngIf="successmessage && timelimit" > 
+    <app-pop-up [message]="successmessage" [type]="'success'" ></app-pop-up>
+  </div>

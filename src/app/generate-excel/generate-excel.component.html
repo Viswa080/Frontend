@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+
+            <mat-tab label="Monthly">
+                <h1 id="center-heading">Monthly Excel Download</h1>
+                <mat-form-field>
+                    <mat-label>Year</mat-label>
+                    <mat-select [(ngModel)]="year">
+                        <mat-option *ngFor="let singleyear of years" [value]="singleyear">{{singleyear}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Month</mat-label>
+                    <mat-select [(ngModel)]="month">
+                        <mat-option *ngFor="let singlemonth of months" [value]="singlemonth">{{singlemonth}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-button mat-raised-button color="primary" (click)="generateexcelfile('00',month,year)" [disabled]="!(year&&month)">Get Details</button>
+            </mat-tab>
+
+            <mat-tab label="Day">
+                <h1 id="center-heading">Day Excel Download</h1>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a Date" (dateInput)="selectDate($event)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <button mat-button mat-raised-button color="primary" (click)="generateexcelfile('00','00','0000')" [disabled]="!(year&&month&&day)">Get Details</button>
+            </mat-tab>
+
+            <mat-tab label="Year">
+                <h1 id="center-heading">Yearly Excel Download</h1>
+                <mat-form-field>
+                    <mat-label>Year</mat-label>
+                    <mat-select [(ngModel)]="year">
+                        <mat-option *ngFor="let singleyear of years" [value]="singleyear">{{singleyear}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-button mat-raised-button color="primary" (click)="generateexcelfile('00','00',year)" [disabled]="!year">Get Details</button>
+            </mat-tab>
+            
+          </mat-tab-group>
+        <br>
+        
+        <div class="container-fluid"><div class="text-center text-danger">{{errormessage}}</div></div>
+    </body>
+</html>

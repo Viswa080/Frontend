@@ -1,0 +1,40 @@
+#field  {
+    padding: 10px;
+}
+.card-title{
+    padding: 20px 0px;
+}
+.card-body{
+    background-color: white;
+}
+.custom-container{
+    width: 700px;
+    border: 1px solid black;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color:white;
+    position:fixed;
+    top: 20%;
+    right:27%;
+
+}
+.bottom-right-btn{
+float: right;
+}
+.bottom-left-btn{
+    float: left;
+    }
+body{
+    background-color: transparent;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: underline;
+}
+input{
+    border: 1px solid black;
+}
