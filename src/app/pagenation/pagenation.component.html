@@ -1,0 +1,17 @@
+<div class="pagenation"> 
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item" (click)="modifyPage(currentPage-1)"[ngClass]="{disabled:currentPage==1}" >
+        <button class="page-link">Previous</button>
+      </li>
+      <li *ngFor="let page of pages"class="page-item" (click)="modifyPage(page)"  [ngClass]="{active: page==currentPage}" >
+        <button class="page-link"  >{{page}}</button>
+      </li>
+      
+      <li class="page-item" (click)="modifyPage(currentPage+1)"  [ngClass]="{disabled:currentPage==totalPages}">
+        <button class="page-link">Next</button>
+      </li>
+    </ul>
+</nav>
+</div>
+

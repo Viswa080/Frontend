@@ -1,0 +1,35 @@
+<body>
+    <div class="container-fluid custom-container">
+        <div class="card-body">
+    
+            <div class="card-title">
+                <h1>Update Details</h1>
+            </div> 
+            <div class="row">
+                <div class="col-md-3" id="field"> <label for="id" >Product ID</label><input type="text" id="id" placeholder="ID" class="form-control" [(ngModel)]="productdetails.productid"></div>
+                <div class="col-md-3" id="field" > <label for="Name" > Name</label><input type="text" id="Name" placeholder="Name" class="form-control" [(ngModel)]="productdetails.productname"></div>
+                <div class="col-md-3" id="field"> <label for="Type" >Type</label><input type="text"  id="Type" placeholder="Type" class="form-control" [(ngModel)]="productdetails.producttype"></div> 
+                <div class="col-md-3" id="field"> <label for="Category" >Category</label><input type="text" id="Category" placeholder="Category" class="form-control" [(ngModel)]="productdetails.productcategory"></div>   
+            </div>
+            <div class="row">
+                <div class="col-md-3" id="field"> <label for="color">Color</label><input type="text" id="color" placeholder="Color" class="form-control" [(ngModel)]="productdetails.color"></div>
+                <div class="col-md-3" id="field"> <label for="mrp">MRP</label><input type="text" id="mrp" placeholder="MRP" class="form-control" [(ngModel)]="productdetails.productmarkedcost"></div>
+                <div class="col-md-3" id="field"> <label for="soldcost">Sold Cost</label><input type="text"  id="soldcost" placeholder="Sold Cost" class="form-control" [(ngModel)]="productdetails.productsoldcost"></div> 
+                <div class="col-md-3" id="field"> <label for="comedate">Come Date</label><input type="text" id="comedate" placeholder="Come Date" class="form-control" [(ngModel)]="productdetails.productcomedate"></div>   
+            </div>
+            <div class="row">
+                <div class="col-md-3" id="field"> <label for="solddate">Sold Date</label><input type="text" id="solddate" placeholder="Sold Date" class="form-control"    [(ngModel)]="productdetails.productsolddate"></div>
+                <div class="col-12 text-right" id="field"><button class="btn btn-dark bottom-left-btn" (click)="cancelUpdate()">Cancel</button> 
+                    <button class="btn btn-dark bottom-right-btn" (click)="updateDetails()">Update</button></div>
+            </div>
+    
+        </div>
+               
+                
+    
+    </div>
+    
+    
+</body>
+
+

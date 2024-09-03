@@ -1,0 +1,13 @@
+.pagenation{
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+    padding: 0px;
+    color: black;
+    cursor:pointer;
+}
+.disabled{
+    pointer-events: none;
+}

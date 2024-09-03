@@ -1,0 +1,61 @@
+.example-container {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    height: 850px;
+    transition-duration: 5s;
+}
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+}
+.example-sidenav {
+    padding: 10px;
+    border: 1px solid;
+    width: 20%;
+    background-color: darkgray;
+
+}
+label{
+    padding-top: 10px;
+}
+button{
+    margin-right: 10px
+}
+.form-select{
+    border: 1px solid black;
+}
+input{
+    width: 150px;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+th{
+    font-weight: bold;
+    color: black;  
+}
+td{
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+tr{
+    border-bottom: 1px solid black;
+}
+tr:nth-child(odd){
+    background-color: #ffffff;
+}
+tr:nth-child(even){
+    background-color: #f9f9f9;  
+}
+#pagenation{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    bottom: 1px;
+    right:10px;
+}

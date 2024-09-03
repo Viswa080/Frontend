@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+   <div class="custom-container">
+    <body>
+        <br/>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"><label>ID  </label></th>
+                    <th scope="col"><input type="text" [(ngModel)]="ID" required class="form-control"></th>
+                    <th scope="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="product" [(ngModel)]="typeofid" >
+                            <label lass="form-check-label" for="flexRadioDefault1">Product</label>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="bill" class="form-check-input" [(ngModel)]="typeofid" >
+                            <label lass="form-check-label" for="flexRadioDefault1">Bill</label>
+                        </div>
+                    </th>
+                    <th scope="col"><button class="btn btn-dark" (click)="getproductdetails(ID)">Get Details</button></th>
+                </tr>
+            </thead>
+        </table>
+        <div *ngIf="isproduct==='bill'">
+            <app-practice [originalData]="listofprods"></app-practice>
+        </div>
+        <div *ngIf="isproduct==='product'">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Product ID</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">MRP</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Selling Cost</th>
+                        <th scope="col">Purchased Date</th>
+                        <th scope="col">Sold Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- <td>{{productid}}</td>
+                        <td>{{productname}}</td>
+                        <td>{{productmarkedcost}}</td>
+                        <td>{{color}}</td>
+                        <td>{{productsoldcost}}</td>
+                        <td>{{productcomedate}}</td>
+                        <td>{{productsolddate}}</td>
+                        <td>{{productstatus}}</td> -->
+                        <td>{{prod.productid}}</td>
+                        <td>{{prod.productname}}</td>
+                        <td>{{prod.productmarkedcost}}</td>
+                        <td>{{prod.color}}</td>
+                        <td>{{prod.productsoldcost}}</td>
+                        <td>{{prod.productcomedate}}</td>
+                        <td>{{prod.productsolddate}}</td>
+                        <td>{{productstatus}}</td>
+                        <td><button class="btn btn-success" (click)="enableUpdate()">Update</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="errormessage && timelimit" > 
+            <app-pop-up [message]="errormessage" [type]="'error'" ></app-pop-up>
+        </div>
+        <div *ngIf="successmessage && timelimit" > 
+            <app-pop-up [message]="successmessage" [type]="'success'" ></app-pop-up>
+        </div>
+        <div *ngIf="updateProduct" > 
+            <app-update-pop-up [productdetails]="prod" (cancelUpdateData)="disableUpdate()" (productUpdate)="UpdateProductDetails($event)"></app-update-pop-up>
+        </div>
+        <br/>
+    </body>
+   </div>
+    
+</html>
